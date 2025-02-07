@@ -1,0 +1,34 @@
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<h2>All students</h2>
+
+<table th:if="${students.size() > 0}" border="1" style="width: 100%;">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Grade</th>
+    <th>Birth Date</th>
+    <th>Delete</th>
+  </tr>
+  
+  <tr th:each="student : ${students}">
+    <td th:text="${student.id}"></td>
+    <td>
+      <a th:href="${student.url + '/update'}" th:text="${student.name}"></a>
+    </td>
+    <td th:text="${student.grade.label}"></td>
+    <td th:text="${#dates.format(student.birthDate, 'MM/dd/yyyy')}"></td>
+    <!-- Delete button -->
+    <td>
+      <a th:href="${student.url + '/delete'}">&times;</a>
+    </td>
+  </tr>
+</table>
+
+<p th:unless="${students.size() > 0}">No students</p>
+
+<p>
+  <a href="/student/create">Add student</a>
+</p>
+

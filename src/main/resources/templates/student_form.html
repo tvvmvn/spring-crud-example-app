@@ -1,0 +1,64 @@
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<h2>Save Student</h2>
+<form 
+  action="#" 
+  th:action="@{/student/create}" 
+  th:object="${student}" 
+  method="post"
+>
+  <!-- for update -->
+  <input type="hidden" th:field="*{id}">
+
+  <!-- Name -->
+  <p>
+    <label>
+      Name:
+      <input type="text" th:field="*{name}">
+    </label>
+  </p>
+
+  <!-- Grade -->
+  <p>
+    <label>
+      Grade:
+      <select th:field="*{grade}">
+        <option 
+          th:each="i : ${grade}" 
+          th:text="${i.label}" 
+          th:value="${i}"
+        />
+      </select>
+    </label>
+  </p>
+
+  <!-- Birth date -->
+  <p>
+    <label>
+      Birth Date:
+      <input type="date" th:field="*{birthDate}">
+    </label>
+  </p>
+  
+  <!-- Submit or cancel -->
+  <p>
+    <button type="submit">save</button>
+    <a href="/">cancel</a>
+  </p>
+  
+  <!-- errors -->
+  <ul>
+    <li
+      th:if="${#fields.hasErrors('name')}" 
+      th:errors="*{name}"
+      style="color: red"
+    />
+    <li
+      th:if="${#fields.hasErrors('birthDate')}" 
+      th:errors="*{birthDate}"
+      style="color: red"
+    />
+  </ul>
+</form>
+
