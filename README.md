@@ -1,6 +1,11 @@
 ## Spring CRUD example app
 > Spring framework example
 
+### What we'll learn
+- Layered pattern \
+Service, Repository, Database
+- CRUD Operations
+
 ### Dependencies 
 - Spring Web
 - JPA
@@ -9,8 +14,8 @@
 - Thymeleaf
 - Dev Tools
 
-### Model Diagram
-![Model](/model.png)
+<!-- ### Model Diagram
+![Model](/model.png) -->
 
 ### UI mockup
 - home (student list)

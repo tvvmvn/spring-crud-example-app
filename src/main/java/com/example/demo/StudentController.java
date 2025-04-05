@@ -24,6 +24,7 @@ public class StudentController {
   // Get all students
   @GetMapping("/")
   public String getAll(Model model) {
+    
     List<Student> students = repository.findAll();
 
     model.addAttribute("students", students);
