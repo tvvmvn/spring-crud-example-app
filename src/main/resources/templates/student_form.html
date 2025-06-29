@@ -1,15 +1,18 @@
+<h1>Student Form</h1>
 
-<div th:replace="~{fragments/header :: header}"></div>
-
-<h2>Save Student</h2>
 <form 
   action="#" 
-  th:action="@{/student/create}" 
+  th:action="@{/students}" 
   th:object="${student}" 
   method="post"
 >
   <!-- for update -->
-  <input type="hidden" th:field="*{id}">
+  <p th:if="*{id}">
+    <label>
+      Id: 
+      <input type="text" th:field="*{id}" readonly>
+    </label>
+  </p>
 
   <!-- Name -->
   <p>
@@ -25,9 +28,9 @@
       Grade:
       <select th:field="*{grade}">
         <option 
-          th:each="i : ${grade}" 
-          th:text="${i.label}" 
-          th:value="${i}"
+          th:each="each : ${grade}" 
+          th:text="${each.label}" 
+          th:value="${each}"
         />
       </select>
     </label>

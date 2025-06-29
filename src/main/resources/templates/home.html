@@ -1,7 +1,4 @@
-
-<div th:replace="~{fragments/header :: header}"></div>
-
-<h2>All students</h2>
+<h1>Student List</h1>
 
 <table th:if="${students.size() > 0}" border="1" style="width: 100%;">
   <tr>
@@ -9,7 +6,7 @@
     <th>Name</th>
     <th>Grade</th>
     <th>Birth Date</th>
-    <th>Delete</th>
+    <th>-</th>
   </tr>
   
   <tr th:each="student : ${students}">
@@ -19,9 +16,10 @@
     </td>
     <td th:text="${student.grade.label}"></td>
     <td th:text="${#dates.format(student.birthDate, 'MM/dd/yyyy')}"></td>
+    
     <!-- Delete button -->
     <td>
-      <a th:href="${student.url + '/delete'}">&times;</a>
+      <a th:href="${student.url + '/delete'}">Delete</a>
     </td>
   </tr>
 </table>
@@ -30,5 +28,9 @@
 
 <p>
   <a href="/student/create">Add student</a>
+</p>
+
+<p th:if="${param.deleted}">
+  [[${param.deleted}]] has been deleted.
 </p>
 
